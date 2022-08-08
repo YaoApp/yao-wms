@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <title>数据导出</title>
+    <script src="./yao.js"></script>
   </head>
 
   <style>
@@ -37,13 +38,64 @@
       background-color: #232326;
     }
   </style>
+  <script>
+    const yao = new Yao();
+    function print(data) {
+      document.querySelector("#output").value = JSON.stringify(data);
+    }
+
+    async function Get() {
+      const resp = await yao.Get("/xiang/ping");
+      print(resp);
+      console.log(resp);
+    }
+
+    async function Post() {
+      const resp = await yao.Post("/xiang/user/login", { foo: "bar" });
+      print(resp);
+      console.log(resp);
+    }
+
+    async function Download1() {
+      const res = await yao.Download(
+        "/utils/export/stock",
+        {},
+        "下载库存数据.xlsx"
+      );
+      console.log(res);
+    }
+    async function Download2() {
+      const res = await yao.Download(
+        "/utils/export/ticket.total",
+        {},
+        "下载台账.xlsx"
+      );
+      console.log(res);
+    }
+    async function Download3() {
+      const res = await yao.Download(
+        "/utils/export/material.sku",
+        {},
+        "下载单品.xlsx"
+      );
+      console.log(res);
+    }
+    async function Download4() {
+      const res = await yao.Download(
+        "/utils/export/rfid",
+        {},
+        "下载RFID标签.xlsx"
+      );
+      console.log(res);
+    }
+  </script>
 
   <body style="margin: 0; background-color: #3b3b41">
     <div id="app">
-      <a class="block" href="/api/utils/export/stock">下载库存数据</a>
-      <a class="block" href="/api/utils/export/ticket.total">下载台账</a>
-      <a class="block" href="/api/utils/export/material.sku">下载单品</a>
-      <a class="block" href="/api/utils/export/rfid">下载RFID标签</a>
+      <a class="block" onclick="Download1()" href="#">下载库存数据</a>
+      <a class="block" onclick="Download2()" href="#">下载台账</a>
+      <a class="block" onclick="Download3()" href="#">下载单品</a>
+      <a class="block" onclick="Download4()" href="#">下载RFID标签</a>
     </div>
   </body>
 </html>
