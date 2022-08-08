@@ -220,5 +220,16 @@ function main() {
       blocks: 0,
       parent: 70,
     },
+    {
+      id: 7050,
+      name: "导出下载",
+      path: "/table/exports",
+      icon: "icon-download",
+      rank: 101,
+      status: "enabled",
+      visible_menu: 0,
+      blocks: 0,
+      parent: null,
+    },
   ];
 }
