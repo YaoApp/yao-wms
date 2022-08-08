@@ -1,0 +1,36 @@
+{
+  "name": "类目接口",
+  "version": "1.0.0",
+  "description": "类目接口",
+  "group": "utils",
+  "guard": "-",
+  "paths": [
+    {
+      "path": "/export/:name",
+      "method": "GET",
+      "process": "flows.utils.export",
+      "in": ["$param.name"],
+
+      "out": {
+        "status": 200,
+        "type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "headers": {
+          "Content-Disposition": "attachment;filename=导出数据.xlsx"
+        }
+      }
+    },
+    {
+      "path": "/rfid/sku",
+      "method": "GET",
+      "process": "flows.utils.rfid",
+      "in": ["$query.id"],
+      "out": {
+        "status": 200,
+        "type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "headers": {
+          "Content-Disposition": "attachment;filename=单品标签.xlsx"
+        }
+      }
+    }
+  ]
+}

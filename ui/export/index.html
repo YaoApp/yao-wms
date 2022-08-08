@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>数据导出</title>
+  </head>
+
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+        "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+      color: #a2a5b9;
+    }
+    #app {
+      max-width: 1200px;
+      padding: 0 32px;
+      margin: 0 auto;
+      padding-top: 46px;
+    }
+
+    .block {
+      color: #a2a5b9;
+      text-decoration: none;
+      display: block;
+      background-color: #2f2f34;
+      font-size: 16px;
+      text-align: center;
+      border-radius: 6px;
+      height: 64px;
+      line-height: 64px;
+      margin-top: 24px;
+      cursor: pointer;
+    }
+
+    .block:hover {
+      background-color: #232326;
+    }
+  </style>
+
+  <body style="margin: 0; background-color: #3b3b41">
+    <div id="app">
+      <a class="block" href="/api/utils/export/stock">下载库存数据</a>
+      <a class="block" href="/api/utils/export/ticket.total">下载台账</a>
+      <a class="block" href="/api/utils/export/material.sku">下载单品</a>
+      <a class="block" href="/api/utils/export/rfid">下载RFID标签</a>
+    </div>
+  </body>
+</html>

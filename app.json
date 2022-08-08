@@ -1,0 +1,21 @@
+{
+  "name": "智慧仓库管理平台",
+  "short": "智慧仓库",
+  "version": "1.0.3",
+  "description": "智慧仓库管理平台",
+  "option": {
+    "nav_user": "xiang.user",
+    "nav_menu": "xiang.menu",
+    "hide_user": false,
+    "hide_menu": true,
+    "login": {
+      "entry": {
+        "admin": "/kanban/index"
+      },
+      "password": {
+        "captcha": "/api/user/captcha",
+        "login": "/api/user/login"
+      }
+    }
+  }
+}

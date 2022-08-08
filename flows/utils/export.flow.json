@@ -1,0 +1,18 @@
+{
+  "label": "下载RFID",
+  "version": "1.0.0",
+  "description": "下载RFID",
+  "nodes": [
+    {
+      "name": "文件",
+      "process": "xiang.table.Export",
+      "args": ["{{$in.0}}", {}, 20]
+    },
+    {
+      "name": "数据",
+      "process": "xiang.fs.ReadFile",
+      "args": ["{{$res.文件}}", false]
+    }
+  ],
+  "output": "{{$res.数据.content}}"
+}
