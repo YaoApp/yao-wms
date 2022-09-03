@@ -65,10 +65,11 @@ cd /app/path/wms
 
 # Create tables & set menu
 yao migrate --reset
-yao run flows.setmenu
+yao run flows.init.menu
 
 # Demo data
 yao run flows.demo.data
+
 ```
 
 #### Start the service

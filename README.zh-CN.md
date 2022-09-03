@@ -65,7 +65,10 @@ cd /app/path/wms
 
 # 创建数据表 & 设置菜单
 yao migrate --reset
-yao run flows.setmenu
+
+# 演示数据
+yao run flows.init.menu
+
 ```
 
 #### 启动服务
