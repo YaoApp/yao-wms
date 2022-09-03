@@ -9,9 +9,7 @@
     "hide_user": false,
     "hide_menu": true,
     "login": {
-      "entry": {
-        "admin": "/kanban/index"
-      },
+      "entry": { "admin": "/kanban/index" },
       "password": {
         "captcha": "/api/user/captcha",
         "login": "/api/user/login"
