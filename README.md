@@ -1,4 +1,4 @@
-# DEMO AMS
+# YAO WMS
 
 ![Image](docs/images/intro.jpg)
 

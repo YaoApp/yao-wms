@@ -1,4 +1,4 @@
-# 仓库管理系统
+# YAO WMS
 
 ![Image](docs/images/intro.jpg)
 
