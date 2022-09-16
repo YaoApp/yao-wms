@@ -360,3 +360,40 @@ function FormatDateTime(date) {
 
   return `${year}年${month}月${day}日 ${hours}:${mins}:${secs}`;
 }
+
+//根据标签获取一个产品
+function GetOne(code) {
+  console.log(code);
+  if (!code || code == "") {
+    return "";
+  }
+
+  var res = Explode(code);
+  var sku = res.sku;
+  if (sku != "") {
+    var product = Process("models.material.sku.get", {
+      withs: { material: {} },
+      wheres: [{ column: "sku_sn", value: sku }],
+      limit: 1,
+    });
+    if (product.length) {
+      return product[0];
+    }
+  }
+  return "";
+}
+function Explode(sn) {
+  sn = sn || "";
+  var res = { category: "", sku: "", plan: "", item: "", sn: sn };
+
+  // 无效标签
+  if (sn.length != 29) {
+    return res;
+  }
+
+  res.category = sn.substring(0, 6);
+  res.sku = sn.substring(6, 14);
+  res.plan = sn.substring(14, 20);
+  res.item = sn.substring(20, 29);
+  return res;
+}

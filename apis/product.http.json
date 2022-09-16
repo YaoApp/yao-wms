@@ -1,0 +1,19 @@
+{
+  "name": "单品接口",
+  "version": "1.0.0",
+  "description": "单品接口",
+  "group": "product",
+  "guard": "-",
+  "paths": [
+    {
+      "path": "/find",
+      "method": "GET",
+      "process": "scripts.sku.GetOne",
+      "in": ["$query.code"],
+      "out": {
+        "status": 200,
+        "type": "application/json"
+      }
+    }
+  ]
+}
