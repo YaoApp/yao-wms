@@ -362,8 +362,9 @@ function FormatDateTime(date) {
 }
 
 //根据标签获取一个产品
-function GetOne(code) {
-  console.log(code);
+function GetOne(code, headers) {
+  // console.log(headers);
+  // console.log(code);
   if (!code || code == "") {
     return "";
   }
@@ -377,6 +378,14 @@ function GetOne(code) {
       limit: 1,
     });
     if (product.length) {
+      if (product[0].material.icon[0]) {
+        var token = headers["Authorization"][0].replace("Bearer ", "");
+        product[0].material.icon =
+          "/api/xiang/storage/url?name=" +
+          product[0].material.icon[0] +
+          "&token=" +
+          token;
+      }
       return product[0];
     }
   }

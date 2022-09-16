@@ -42,7 +42,7 @@
     <div class="bar_2">
       <span class="bar_2_title">添加</span>
       <div class="bar_1_div3">
-        <button>保存所有</button>
+        <button id="save_all">保存所有</button>
       </div>
     </div>
     <div class="bar_3">
@@ -54,7 +54,7 @@
 
         <div class="bar_1_div2">
           <span>状态：</span>
-          <select class="bar_1_select">
+          <select class="bar_1_select" id="select_status">
             <option class="opt" value="录入">录入</option>
             <option class="opt" value="生效">生效</option>
             <option class="opt" value="异常">异常</option>
@@ -186,7 +186,7 @@
         all =
           all +
           ` <div class="bar_3_div5">
-          <img src="./img/jaiodai.jpg" width="100%" height="180px" />
+            <img src="${resp.material.icon}" width="100%" height="180px" />
           <p class="bar_3_div6_p">标签: <span>${resp.sku_sn}</span></p>
 
           <p class="bar_3_div6_p">单位: <span>${resp.unit}</span></p>
@@ -208,14 +208,25 @@
       if (event.keyCode == 13) {
         var code = $("#inp_code").val();
         var data = GetSku(code);
-        console.log(data);
+        //console.log(data);
       }
     });
 
-    // async function Post() {
-    //   const resp = await yao.Post("/xiang/user/login", { foo: "bar" });
-    //   print(resp);
-    //   console.log(resp);
-    // }
+    $("#save_all").click(function () {
+      var params = {};
+      params.status = $("#select_status").val();
+      params.code = $("#inp_code").val();
+      params.user_id = $("#user_select").val();
+      params.data = temp_arr;
+      console.log(params);
+      PostALL(params);
+    });
+
+    async function PostALL(data) {
+      const resp = await yao.Post("/product/save", { data: data });
+      if (resp.code == 200) {
+        location.reload(true);
+      }
+    }
   </script>
 </html>

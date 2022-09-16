@@ -9,7 +9,17 @@
       "path": "/find",
       "method": "GET",
       "process": "scripts.sku.GetOne",
-      "in": ["$query.code"],
+      "in": ["$query.code", ":headers"],
+      "out": {
+        "status": 200,
+        "type": "application/json"
+      }
+    },
+    {
+      "path": "/save",
+      "method": "POST",
+      "process": "scripts.product.Save",
+      "in": [":payload"],
       "out": {
         "status": 200,
         "type": "application/json"
