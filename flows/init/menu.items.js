@@ -231,5 +231,16 @@ function main() {
       blocks: 0,
       parent: null,
     },
+    {
+      id: 7060,
+      name: "扫码枪",
+      path: "/iframe?src=/scanner",
+      icon: "icon-package",
+      rank: 101,
+      status: "enabled",
+      visible_menu: 0,
+      blocks: 0,
+      parent: null,
+    },
   ];
 }
