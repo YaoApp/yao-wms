@@ -378,7 +378,11 @@ function GetOne(code, headers) {
       limit: 1,
     });
     if (product.length) {
-      if (product[0].material.icon.length) {
+      if (
+        product[0].material &&
+        product[0].material.icon &&
+        product[0].material.icon.length
+      ) {
         var token = headers["Authorization"][0].replace("Bearer ", "");
         product[0].material.icon =
           "/api/xiang/storage/url?name=" +
