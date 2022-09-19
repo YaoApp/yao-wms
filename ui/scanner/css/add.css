@@ -34,8 +34,8 @@
 .bar_2_title {
   font-weight: 600;
   font-size: 20px;
-  line-height: 50px;
-  margin-left: 20px;
+  line-height: 63px;
+  margin-left: 28px;
 }
 /**
 头部布局结束
@@ -96,7 +96,7 @@
   transition: all 0.3s;
 }
 .bar_1_div span {
-  margin-left: 40px;
+  margin-left: 30px;
   line-height: 40px;
   font-size: 16px;
 }
@@ -188,6 +188,8 @@
   background-color: #41b883;
   color: #f6f6f9;
   border: 1px solid #232326;
+  margin-top: 17px;
+  margin-right: 6px;
 }
 /* .bar_1 {
   width: 1136px;
@@ -219,15 +221,23 @@
 }
 .bar_3_div5 {
   margin-top: 5px;
-  margin-left: 5px;
-  padding-right: 5px;
+
   height: 300px;
   width: 24%;
-
+  border-radius: 6px;
   border: 0px solid red;
 }
 
 .bar_3_div6_p {
-  margin-top: 5px;
   text-align: center;
+}
+.bar_3_div5 img {
+  width: 95%;
+  padding: 6px;
+  height: 180px;
+  border-radius: 16px;
+}
+.bar_3_div5_first {
+  margin-top: 5px;
+  margin-left: 23px;
 }

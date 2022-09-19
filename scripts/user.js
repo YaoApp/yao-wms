@@ -149,3 +149,13 @@ function GetByID(id) {
     select: ["id", "name", "user_sn", "photo", "status"],
   });
 }
+/**
+ * 获取所有用户信息
+ * @param {*}
+ * @returns
+ */
+function GetAllUser() {
+  return Process("models.user.get", {
+    select: ["id", "name"],
+  });
+}

@@ -42,6 +42,13 @@
       "process": "flows.user.select",
       "in": [],
       "out": { "status": 200, "type": "application/json" }
+    },
+    {
+      "path": "/all",
+      "method": "GET",
+      "process": "scripts.user.GetAllUser",
+      "in": [],
+      "out": { "status": 200, "type": "application/json" }
     }
   ]
 }
