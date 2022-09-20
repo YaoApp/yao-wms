@@ -222,7 +222,7 @@
 .bar_3_div5 {
   margin-top: 5px;
 
-  height: 300px;
+  height: 325px;
   width: 24%;
   border-radius: 6px;
   border: 0px solid red;
@@ -283,4 +283,11 @@
   margin-top: 35px;
   border-radius: 6px;
   width: 40%;
+}
+.dels {
+  width: 18px;
+  height: 18px;
+  position: relative;
+  left: 238px;
+  bottom: 190px;
 }
