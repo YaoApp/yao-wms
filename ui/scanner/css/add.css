@@ -259,13 +259,13 @@
   left: 50%;
   width: 377px;
   height: 150px;
-  background:#404046;
+  background: #404046;
   transform: translate(-50%, -50%);
   border-radius: 6px;
   padding: 37px 40px;
 }
 .web_notice_h3 {
-  color:#a2a5b9;
+  color: #a2a5b9;
   font-weight: bold;
   text-align: center;
   font-size: 30px;

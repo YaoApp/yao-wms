@@ -30,7 +30,7 @@ function Save(payload) {
     var rfid = BigInt(data[i]["params"]["code"]).toString(16);
     ids.push({
       rfid: rfid,
-      uptime: par.timestamp,
+      uptime: par.timestamp * 1000,
     });
     par.data = ids;
     Process("scripts.event.OnGate", data[i]["params"]["status"], par);
