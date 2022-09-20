@@ -3,6 +3,18 @@ function Save(payload) {
     limit: 1,
   });
   var data = payload.data.data || [];
+  if (!data.length) {
+    return {
+      code: 400,
+      message: "操作失败!",
+    };
+  }
+  if (!node_id.length) {
+    return {
+      code: 400,
+      message: "操作失败!",
+    };
+  }
 
   for (var i in data) {
     var par = {};
@@ -15,8 +27,9 @@ function Save(payload) {
     par.user_sn = user.user_sn;
     par.timestamp = parseInt(Date.now() / 1000);
     var ids = [];
+    var rfid = BigInt(data[i]["params"]["code"]).toString(16);
     ids.push({
-      rfid: data[i]["params"]["code"],
+      rfid: rfid,
       uptime: par.timestamp,
     });
     par.data = ids;
