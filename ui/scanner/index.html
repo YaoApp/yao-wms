@@ -220,7 +220,21 @@
 
     const temp_arr = [];
     async function GetSku(code) {
-      var resp = await yao.Get("/product/find?code=" + code);
+      //  const resp = await yao.Post("/product/save", { data: data });
+      var resp = await yao.Post("/product/find", {
+        code: code,
+        data: temp_arr,
+      });
+      if (resp == 1) {
+        $(".bar_2_title").html("编码重复").css("color", "#ed232e");
+        //clearInterval(time); //清除之前的定时器
+        time = setInterval(function () {
+          //初始化现在的定时器
+          $(".bar_2_title")
+            .html("扫码完成后点击保存按钮将数据录入系统")
+            .css("color", "");
+        }, 5000);
+      }
       if (resp.id) {
         var params = {};
         params.status = $("#select_status").val();

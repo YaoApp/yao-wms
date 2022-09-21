@@ -362,7 +362,14 @@ function FormatDateTime(date) {
 }
 
 //根据标签获取一个产品
-function GetOne(code, headers) {
+function GetOne(payload, headers) {
+  var code = payload.code;
+  var datas = payload.data;
+  for (var i in datas) {
+    if (code == datas[i]["params"]["code"]) {
+      return 1;
+    }
+  }
   // console.log(headers);
   // console.log(code);
   if (!code || code == "") {

@@ -7,9 +7,9 @@
   "paths": [
     {
       "path": "/find",
-      "method": "GET",
+      "method": "POST",
       "process": "scripts.sku.GetOne",
-      "in": ["$query.code", ":headers"],
+      "in": [":payload", ":headers"],
       "out": {
         "status": 200,
         "type": "application/json"
