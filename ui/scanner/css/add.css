@@ -106,6 +106,7 @@
 }
 
 .bar_1_select {
+  appearance: none;
   padding: 10px;
   width: 50%;
   height: 40px;

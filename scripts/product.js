@@ -33,7 +33,7 @@ function Save(payload) {
     if (exists.length) {
       console.log("存在");
       fail++;
-      msg = msg == "编号已经录入";
+      msg = "编号已经录入";
       continue;
     }
     var par = {};
@@ -62,7 +62,7 @@ function Save(payload) {
     if (response) {
       success++;
     } else {
-      msg = msg == "" ? "保存进出记录失败，" : msg;
+      msg = "保存进出记录失败，";
       fail++;
     }
   }
