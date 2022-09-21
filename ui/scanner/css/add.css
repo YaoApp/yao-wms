@@ -32,8 +32,8 @@
   border-bottom: 1px solid #3b3b41;
 }
 .bar_2_title {
-  font-weight: 600;
-  font-size: 20px;
+  font-size: 16px;
+
   line-height: 63px;
   margin-left: 28px;
 }
@@ -61,7 +61,7 @@
   border: 0px solid red;
 }
 .bar_1_div {
-  margin-top: 15px;
+  margin-top: 25px;
   width: 400px;
   height: 100%;
 
@@ -70,7 +70,7 @@
 .bar_1_div2 {
   width: 227px;
   height: 100%;
-  margin-top: 15px;
+  margin-top: 25px;
   margin-left: 15px;
   border: 0px solid red;
 }
@@ -106,6 +106,7 @@
 }
 
 .bar_1_select {
+  padding: 10px;
   width: 50%;
   height: 40px;
   position: relative;
@@ -276,13 +277,14 @@
   background: #64c496;
   color: #fff;
   text-align: center;
-  font-weight: bold;
-  font-size: 19px;
-  line-height: 60px;
+  /* font-weight: bold; */
+  font-size: 16px;
+  line-height: 38px;
   margin: 0 auto;
-  margin-top: 35px;
+  margin-top: 40px;
   border-radius: 6px;
-  width: 40%;
+  width: 20%;
+  height: 38px;
 }
 .dels {
   width: 18px;
@@ -290,4 +292,9 @@
   position: relative;
   left: 238px;
   bottom: 190px;
+}
+.alert_text {
+  margin-top: 15px;
+  font-size: 16px;
+  text-align: left;
 }

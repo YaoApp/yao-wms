@@ -41,9 +41,9 @@
       </div>
 
       <div class="bar_2">
-        <span class="bar_2_title">添加</span>
+        <span class="bar_2_title">扫码完成后点击保存按钮将数据录入系统</span>
         <div class="bar_1_div3">
-          <button id="save_all">保存所有</button>
+          <button id="save_all">保存</button>
         </div>
       </div>
       <div class="bar_3">
@@ -190,6 +190,7 @@
     <div id="web_alert" class="web_notice">
       <div class="web_notice_div1">
         <h3 class="web_notice_h3">操作成功!</h3>
+        <p class="alert_text" id="alert_text">&nbsp;</p>
         <a class="web_notice_a" onclick="confirmAlert()">确认</a>
       </div>
     </div>
@@ -223,7 +224,7 @@
       if (resp.id) {
         var params = {};
         params.status = $("#select_status").val();
-        params.code = $("#inp_code").val();
+        params.code = code;
         params.user_id = $("#user_select").val();
         resp.params = params;
 
@@ -308,7 +309,7 @@
         }
 
         $("#total_product").html(all);
-        console.log(temp_arr);
+        //console.log(temp_arr);
       }
 
       return resp;
@@ -318,6 +319,7 @@
         var code = $("#inp_code").val();
         var data = GetSku(code);
         //console.log(data);
+        $("#inp_code").val("");
       }
     });
 
@@ -333,7 +335,7 @@
       params.code = $("#inp_code").val();
       params.user_id = $("#user_select").val();
       params.data = temp_arr;
-      console.log(params);
+      //console.log(params);
       PostALL(params);
     });
     function confirmAlert() {
@@ -346,8 +348,10 @@
       if (resp.code == 200) {
         $("#web_alert").css("display", "block");
         $("#body").css("filter", "blur(20px)");
+        $("#alert_text").html(resp.message);
       } else {
         $(".web_notice_h3").html("操作失败!");
+        $("#alert_text").html(resp.message);
         $("#web_alert").css("display", "block");
         $("#body").css("filter", "blur(20px)");
       }
@@ -356,9 +360,86 @@
       var ht = $(obj).closest(".bar_3_div5");
 
       ht.remove();
+
       //remove
       temp_arr.splice(index, 1);
-      console.log(temp_arr);
+
+      var numbers = temp_arr.length;
+
+      var all = ""; // $("#total_product").html();
+      var j = 1;
+      for (var i in temp_arr) {
+        // console.log("进入for循环");
+
+        // <img src="${resp.material.icon[0]}" width="100%" height="180px" />
+
+        if (j % 4 == 1) {
+          all =
+            all +
+            ` <div class="bar_3_div5 bar_3_div5_first" data-index="${i}">
+    <img src="${temp_arr[i].material.icon}"  />
+    <div class="dels" onclick="Dels(${i},this)">
+   <svg
+        t="1663664726540"
+      
+        viewBox="0 0 1024 1024"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        p-id="1561"
+        width="28"
+        height="28"
+      >
+        <path
+          d="M827.392 195.584q65.536 65.536 97.792 147.456t32.256 167.936-32.256 167.936-97.792 147.456-147.456 98.304-167.936 32.768-168.448-32.768-147.968-98.304-98.304-147.456-32.768-167.936 32.768-167.936 98.304-147.456 147.968-97.792 168.448-32.256 167.936 32.256 147.456 97.792zM720.896 715.776q21.504-21.504 18.944-49.152t-24.064-49.152l-107.52-107.52 107.52-107.52q21.504-21.504 24.064-49.152t-18.944-49.152-51.712-21.504-51.712 21.504l-107.52 106.496-104.448-104.448q-21.504-20.48-49.152-23.04t-49.152 17.92q-21.504 21.504-21.504 52.224t21.504 52.224l104.448 104.448-104.448 104.448q-21.504 21.504-21.504 51.712t21.504 51.712 49.152 18.944 49.152-24.064l104.448-104.448 107.52 107.52q21.504 21.504 51.712 21.504t51.712-21.504z"
+          p-id="1562"
+          fill="#2c2c2c"
+        ></path></svg>
+      </div>
+  <p class="bar_3_div6_p">标签: <span>${temp_arr[i].sku_sn}</span></p>
+
+  <p class="bar_3_div6_p">单位: <span>${temp_arr[i].unit}</span></p>
+
+  <p class="bar_3_div6_p">物资名称: <span>${temp_arr[i].material.name}</span></p>
+
+  <p class="bar_3_div6_p">规格型号: <span>高度：${temp_arr[i].specs["高度"]}</span></p>
+  
+</div>
+`;
+        } else {
+          all =
+            all +
+            ` <div class="bar_3_div5" data-index="${i}">
+    <img src="${temp_arr[i].material.icon}"  />
+    <div class="dels" onclick="Dels(${i},this)" >
+   <svg
+        t="1663664726540"
+        viewBox="0 0 1024 1024"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        p-id="1561"
+        width="28"
+        height="28"
+      >
+        <path
+          d="M827.392 195.584q65.536 65.536 97.792 147.456t32.256 167.936-32.256 167.936-97.792 147.456-147.456 98.304-167.936 32.768-168.448-32.768-147.968-98.304-98.304-147.456-32.768-167.936 32.768-167.936 98.304-147.456 147.968-97.792 168.448-32.256 167.936 32.256 147.456 97.792zM720.896 715.776q21.504-21.504 18.944-49.152t-24.064-49.152l-107.52-107.52 107.52-107.52q21.504-21.504 24.064-49.152t-18.944-49.152-51.712-21.504-51.712 21.504l-107.52 106.496-104.448-104.448q-21.504-20.48-49.152-23.04t-49.152 17.92q-21.504 21.504-21.504 52.224t21.504 52.224l104.448 104.448-104.448 104.448q-21.504 21.504-21.504 51.712t21.504 51.712 49.152 18.944 49.152-24.064l104.448-104.448 107.52 107.52q21.504 21.504 51.712 21.504t51.712-21.504z"
+          p-id="1562"
+          fill="#2c2c2c"
+        ></path></svg>
+        </div>
+  <p class="bar_3_div6_p">标签: <span>${temp_arr[i].sku_sn}</span></p>
+
+  <p class="bar_3_div6_p">单位: <span>${temp_arr[i].unit}</span></p>
+
+  <p class="bar_3_div6_p">物资名称: <span>${temp_arr[i].material.name}</span></p>
+
+  <p class="bar_3_div6_p">规格型号: <span>高度：${temp_arr[i].specs["高度"]}</span></p>
+</div>
+`;
+        }
+        j++;
+      }
+
+      $("#total_product").html(all);
     }
   </script>
 </html>

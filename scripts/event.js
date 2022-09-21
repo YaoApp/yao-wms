@@ -165,6 +165,7 @@ function OnGate(direction, data) {
   data["user"] = user;
   data["records"] = records;
   Broadcast(type, data); // 出库 or 入库
+  return true;
 }
 
 /**
