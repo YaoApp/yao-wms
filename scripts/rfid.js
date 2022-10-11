@@ -31,3 +31,10 @@ function Explode(sn) {
   res.item = sn.substring(20, 29);
   return res;
 }
+function BeforeSave(payload) {
+  var times = String(Date.now());
+  if (!payload.s_code || payload.s_code == "") {
+    payload.s_code = times.substring(3);
+  }
+  return [payload];
+}

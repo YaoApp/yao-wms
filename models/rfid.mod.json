@@ -30,6 +30,13 @@
       "option": ["空闲", "入库", "异常"],
       "index": true,
       "comment": "状态: 空闲, 入库, 异常"
+    },
+    {
+      "label": "扫描码",
+      "name": "s_code",
+      "type": "string",
+      "length": 64,
+      "comment": "扫描码,与sn绑定用于扫码枪"
     }
   ],
   "relations": {},

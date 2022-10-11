@@ -375,6 +375,14 @@ function GetOne(payload, headers) {
   if (!code || code == "") {
     return "";
   }
+  var find = Process("models.rfid.get", {
+    wheres: [{ column: "s_code", value: code }],
+    limit: 1,
+  });
+  if (!find.length) {
+    return "";
+  }
+  code = find[0]["sn"];
 
   var res = Explode(code);
   var sku = res.sku;
