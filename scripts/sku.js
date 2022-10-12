@@ -219,6 +219,7 @@ function NextRFID(id) {
   sku["SN"] = BigInt(`${prefix}${next}`).toString(10).toUpperCase();
   sku["SPECS"] = specs.length > 0 ? specs.join(", ") : "-";
   sku["UNIT"] = sku.unit;
+  sku["CODE"] = rfids[0]["s_code"] || "";
 
   // Process("xiang.sys.Sleep", 2000);
   return sku;
