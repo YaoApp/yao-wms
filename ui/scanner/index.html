@@ -191,7 +191,9 @@
       <div class="web_notice_div1">
         <h3 class="web_notice_h3">操作成功!</h3>
         <p class="alert_text" id="alert_text">&nbsp;</p>
-        <a class="web_notice_a" onclick="confirmAlert()">确认</a>
+        <span id="confirm_alt"
+          ><a class="web_notice_a" onclick="confirmAlert()">确认</a>
+        </span>
       </div>
     </div>
 
@@ -356,6 +358,13 @@
       document.querySelector(".web_notice").remove();
       location.reload(true);
     }
+    function confirmAlert2() {
+      // document.querySelector(".web_notice").remove();
+      // $("#body").css("filter", "");
+      // location.reload(true);
+      $("#web_alert").css("display", "none");
+      $("#body").css("filter", "");
+    }
 
     async function PostALL(data) {
       const resp = await yao.Post("/product/save", { data: data });
@@ -368,6 +377,9 @@
         $("#alert_text").html(resp.message);
         $("#web_alert").css("display", "block");
         $("#body").css("filter", "blur(20px)");
+        $("#confirm_alt").html(
+          `<a class="web_notice_a" onclick="confirmAlert2()">确认</a>`
+        );
       }
     }
     function Dels(index, obj) {
