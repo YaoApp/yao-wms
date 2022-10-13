@@ -372,6 +372,9 @@
         $("#web_alert").css("display", "block");
         $("#body").css("filter", "blur(20px)");
         $("#alert_text").html(resp.message);
+        $("#confirm_alt").html(
+          `<a class="web_notice_a" onclick="confirmAlert()">确认</a>`
+        );
       } else {
         $(".web_notice_h3").html("操作失败!");
         $("#alert_text").html(resp.message);
