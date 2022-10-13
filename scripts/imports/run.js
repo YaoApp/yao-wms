@@ -13,8 +13,14 @@ function RFID(columns, data) {
       ignore++;
       continue;
     }
+    columns.push("s_code");
 
     row.pop();
+    var times = String(Date.now());
+
+    var t = times.substring(3);
+    row.push(t);
+
     var res = Process("models.rfid.Insert", columns, [row]);
     if (res != null) {
       failure++;
