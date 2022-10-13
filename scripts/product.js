@@ -21,6 +21,12 @@ function Save(payload) {
   var msg = "";
   for (var i in data) {
     var temp_status = data[i]["params"]["status"] == "进入" ? "入库" : "出库";
+    var rfid_id = Process("models.rfid.get", {
+      wheres: [{ column: "s_code", value: data[i]["params"]["code"] }],
+    });
+    if (rfid_id.length) {
+      data[i]["params"]["code"] = rfid_id[0]["sn"];
+    }
 
     var exists = Process("models.record.get", {
       wheres: [
