@@ -28,20 +28,20 @@ function Save(payload) {
       data[i]["params"]["code"] = rfid_id[0]["sn"];
     }
 
-    var exists = Process("models.record.get", {
-      wheres: [
-        { column: "sn", value: data[i]["params"]["code"] },
-        { column: "type", value: temp_status },
-      ],
-      limit: 1,
-    });
+    // var exists = Process("models.record.get", {
+    //   wheres: [
+    //     { column: "sn", value: data[i]["params"]["code"] },
+    //     { column: "type", value: temp_status },
+    //   ],
+    //   limit: 1,
+    // });
 
-    if (exists.length) {
-      console.log("存在");
-      fail++;
-      msg = "编号已经录入";
-      continue;
-    }
+    // if (exists.length) {
+    //   console.log("存在");
+    //   fail++;
+    //   msg = "编号已经录入";
+    //   continue;
+    // }
     var par = {};
     par.request_id = randomString(15);
     par.node_id = node_id[0].id;
