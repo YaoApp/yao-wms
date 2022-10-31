@@ -202,6 +202,9 @@ function NextRFID(id) {
   var latest = 100000000;
   if (rfids.length > 0) {
     latest = parseInt(rfids[0].sn.substring(20, 29));
+    var codes = rfids[0]["s_code"] || "";
+  } else {
+    var codes = "";
   }
 
   const next = latest + 1;
@@ -219,7 +222,7 @@ function NextRFID(id) {
   sku["SN"] = BigInt(`${prefix}${next}`).toString(10).toUpperCase();
   sku["SPECS"] = specs.length > 0 ? specs.join(", ") : "-";
   sku["UNIT"] = sku.unit;
-  sku["CODE"] = rfids[0]["s_code"] || "";
+  sku["CODE"] = codes;
 
   // Process("xiang.sys.Sleep", 2000);
   return sku;
