@@ -29,3 +29,14 @@ function now() {
   );
   return dateWithOffest.toISOString().slice(0, 19).replace("T", " ");
 }
+function Onface(payload) {
+  var res = Process("scripts.event.OnFace", "进入", {
+    device: "FACE.Q8.IN",
+    node_id: "1",
+    request_id: "a55940b03d142e51bd78837e35464aa2",
+    timestamp: "1658237974032",
+    uptime: 1658237972000,
+    user_sn: "1001",
+  });
+  return res;
+}

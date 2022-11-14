@@ -51,7 +51,7 @@ function OnFace(direction, data) {
 
   // 广播事件
   data["user"] = user;
-  data["record_id"] = record_id;
+  data["record_id"] = parseInt(record_id);
   Broadcast(direction, data); // 进入 or 离开
 }
 

@@ -5,6 +5,7 @@
     <title>扫码</title>
     <script src="./yao.js"></script>
     <script src="./jquery.js"></script>
+    <script type="text/javascript" src="./message.js"></script>
   </head>
 
   <style>
@@ -16,6 +17,20 @@
     }
   </style>
   <link rel="stylesheet" href="./css/add.css" />
+  <script>
+    // WebSocket 数据更新
+    $(function () {
+      Start(
+        null,
+        function onEnter(data) {
+          SetUser(data);
+        },
+        function onLeave(data) {
+          SetUser(data);
+        }
+      );
+    });
+  </script>
 
   <body style="margin: 0; background-color: #3b3b41">
     <div id="body">
@@ -204,6 +219,15 @@
     function print(data) {
       document.querySelector("#output").value = JSON.stringify(data);
     }
+    function SetUser(data) {
+      console.log("进入到setuser");
+      console.log(data);
+      var user = data.payload.user.id;
+      console.log(user);
+      if (user > 0) {
+        GetUserRender(user);
+      }
+    }
 
     $(document).ready(function () {
       var resp = GetUser();
@@ -216,6 +240,24 @@
         ops = ops + ` <option value=${resp[i].id}>${resp[i].name}</option>`;
       }
       //console.log(ops);
+      $("#user_select").html(ops);
+      return resp;
+    }
+    // user render
+    async function GetUserRender(id) {
+      var resp = await yao.Get("/user/all");
+      var ops = ""; //` <option selected = "selected" disabled="disabled" >请选择</option>`;
+      for (var i in resp) {
+        if (resp[i].id == id) {
+          ops =
+            ops +
+            ` <option selected="selected" value=${resp[i].id}>${resp[i].name}</option>`;
+        } else {
+          ops = ops + ` <option value=${resp[i].id}>${resp[i].name}</option>`;
+        }
+        // ops = ops + ` <option value=${resp[i].id}>${resp[i].name}</option>`;
+      }
+      console.log(ops);
       $("#user_select").html(ops);
       return resp;
     }

@@ -49,6 +49,14 @@
       "process": "scripts.user.GetAllUser",
       "in": [],
       "out": { "status": 200, "type": "application/json" }
+    },
+    {
+      "path": "/face_test",
+      "guard": "-",
+      "method": "GET",
+      "process": "scripts.debug.Onface",
+      "in": [":payload"],
+      "out": { "status": 200, "type": "application/json" }
     }
   ]
 }
